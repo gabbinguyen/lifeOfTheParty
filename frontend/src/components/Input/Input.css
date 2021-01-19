@@ -1,0 +1,15 @@
+.custom-form-input {
+  height: 38px;
+  border: 1px solid #d4d6db;
+  padding: 0 10px;
+  border-radius: 4px;
+  width: 100%;
+  box-shadow: 0 0 0 0 #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.custom-form-input:enabled:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem #a6d5fa;
+  border-color: #2196f3;
+}

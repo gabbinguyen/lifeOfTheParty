@@ -1,0 +1,67 @@
+.modal-ds {
+  position: absolute;
+  bottom: 30px;
+  left: 60px;
+  background-color: #ffffff;
+  z-index: 1000;
+  border-radius: 8px;
+  box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.2);
+  padding: 10px 10px;
+}
+
+.modal-ds-section {
+  display: flex;
+  align-items: center;
+  padding: 5px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.modal-ds-section:hover {
+  background-color: #e0e0e0;
+}
+
+.bs-person-icon,
+.io-logout-icon {
+  color: #4b4b4b;
+}
+
+.bs-person-icon {
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 10px;
+}
+
+.io-logout-icon {
+  width: 1.3em;
+  height: 1.3em;
+  margin-right: 11px;
+}
+
+.modal-ds-section p {
+  font-size: 15px;
+  color: #4b4b4b;
+}
+
+/* ---- CSSTransition ---- */
+
+.modal-ds-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.modal-ds-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 250ms, transform 250ms;
+}
+
+.modal-ds-exit {
+  opacity: 1;
+}
+
+.modal-ds-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 250ms, transform 250ms;
+}

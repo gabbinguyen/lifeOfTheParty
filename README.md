@@ -1,1 +1,1 @@
-# lifeOfTheParty
+Life of the party

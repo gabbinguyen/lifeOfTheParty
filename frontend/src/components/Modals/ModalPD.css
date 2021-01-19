@@ -1,0 +1,76 @@
+.modal-pd {
+  background-color: #ffffff;
+  border-radius: 5px;
+  padding: 30px 50px;
+  margin-top: 22%;
+  box-shadow: 0px 11px 15px -7px rgba(0, 0, 0, 0.2),
+    0px 24px 38px 3px rgba(0, 0, 0, 0.14), 0px 9px 46px 8px rgba(0, 0, 0, 0.12);
+}
+
+.modal-pd-warningtext-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.modal-pd-warningtext-wrapper svg {
+  width: 1.5em;
+  height: 1.5em;
+  margin-right: 15px;
+}
+
+.modal-pd-warningtext-wrapper svg path {
+  stroke: #fd1d7a;
+}
+
+.modal-pd-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-pd-controls button {
+  margin: 20px 15px 0px 15px;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 15px;
+}
+
+.modal-pd-controls .modal-pd-no-btn {
+  background-color: #ffffff;
+  transition: background-color 0.2s;
+  color: #2196f3;
+}
+
+.modal-pd-controls .modal-pd-no-btn:hover {
+  background-color: rgb(169, 216, 255, 0.3);
+}
+
+.modal-pd-controls .modal-pd-yes-btn {
+  background-color: #ff5353;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.modal-pd-controls .modal-pd-yes-btn:hover {
+  background-color: #f54848;
+}
+
+/* ---- MODAL CSS TRANSITIONS -----*/
+
+.modal-pd-enter {
+  opacity: 0;
+}
+
+.modal-pd-enter-active {
+  opacity: 1;
+  transition: opacity 150ms;
+}
+
+.modal-pd-exit {
+  opacity: 1;
+}
+
+.modal-pd-exit-active {
+  opacity: 0;
+  transition: opacity 150ms;
+}
