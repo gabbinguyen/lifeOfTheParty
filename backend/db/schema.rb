@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_150906) do
   enable_extension "plpgsql"
 
   create_table "accommodations", force: :cascade do |t|
-    t.integer "itinerary_id"
+    t.integer "event_id"
     t.string "location"
     t.string "date"
     t.datetime "created_at", precision: 6, null: false
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_150906) do
   end
 
   create_table "activities", force: :cascade do |t|
-    t.integer "itinerary_id"
+    t.integer "event_id"
     t.string "description"
     t.string "date"
     t.string "time"
@@ -52,7 +52,6 @@ ActiveRecord::Schema.define(version: 2020_08_27_150906) do
     t.string "name"
     t.string "date"
     t.string "location"
-    t.string "guest_list"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -68,7 +67,7 @@ ActiveRecord::Schema.define(version: 2020_08_27_150906) do
 
   create_table "flights", force: :cascade do |t|
     t.integer "collaborator_id"
-    t.integer "itinerary_id"
+    t.integer "event_id"
     t.string "flight_info"
     t.string "date"
     t.string "time"

@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  post 'api/auth/login',    to: 'users#login'
-  post '/register', to: 'users#create'
-  get  '/current_user',  to: 'users#current_user'
-  
   resources :users 
   resources :events 
   resources :collaborators
@@ -12,4 +8,11 @@ Rails.application.routes.draw do
   resources :flights
   resources :expenses
   resources :charges 
+
+  post '/signup', to: 'users#create'
+  post '/login', to: 'sessions#create' 
+  post '/events', to: 'events#create'  
+
+
+  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

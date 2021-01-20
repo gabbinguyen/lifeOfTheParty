@@ -1,4 +1,4 @@
 class Flight < ApplicationRecord
   belongs_to :collaborator
-  belongs_to :itinerary 
+  belongs_to :event 
 end

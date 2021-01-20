@@ -1,0 +1,290 @@
+
+
+
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInFromLeft {
+  0% {
+      transform: translateX(-100%);
+  }
+  100% {
+      transform: translateX(0);
+  }
+}
+
+.box{
+  display: hidden !important;
+  width: 100%;
+  position: absolute !important;
+  /* z-index: 2 !important; */
+  
+}
+
+.tiny-link:hover + .box,.box:hover{ 
+   /* display: block ;  */
+   position: absolute !important;  
+  
+   /* margin-left: 800px; 
+   float: right !important;  */
+  z-index: 1 !important;
+  }  
+
+.reference-card{
+  text-align: center;
+}
+.add-reference-button{
+  margin-left: 50px !important;
+  margin-top: 50px !important;
+  float: left;
+}
+
+.references-column{
+  display: inline-block;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 800px;
+  height: 800px;
+  margin-left: 20px;
+  margin-top: 10px;
+  /* margin-bottom: auto; */
+  overflow-y: auto;
+  background-color: rgba(22, 22, 22, 0.5);
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 100px;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+
+}
+
+.references-preview {
+  display: inline-block;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 800px;
+  height: 800px;
+  margin-left: 20px;
+  margin-top: 80px;
+  /* margin-bottom: auto; */
+  overflow-y: auto;
+  background-color: rgba(22, 22, 22, 0.5);
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 100px;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.projects-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 300px;
+  height: 800px;
+  margin-left: 20px;
+  margin-top: 10px;
+  /* margin-bottom: auto; */
+  overflow-y: auto;
+  background-color: rgba(22, 22, 22, 0.5);
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 100px;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+  
+}
+
+.issues-column{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 400px;
+  height: 800px;
+  margin-left: 20px;
+  margin-top: 10px;
+  /* margin-bottom: auto; */
+  overflow-y: auto;
+  background-color: rgba(22, 22, 22, 0.5);
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 100px;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+  
+}
+
+.projects-column-container{
+  display: grid;
+ grid-template-columns: 1fr 5fr;
+ 
+  width: 100vw;
+}
+
+
+
+
+
+.homepage{
+ 
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+  
+}
+
+.login-navbar{
+  
+}
+
+.project-button{
+  float: left;
+  margin-left: 320px !important;
+  margin-top: 100px !important;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.issue-button{
+  float: left;
+  margin-left: 320px !important;
+  margin-top: 100px !important;
+  animation: 1s ease-out 0s 1 slideInFromLeft;
+}
+
+.project-card{
+  
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 275px;
+  border-radius: 10px;
+  background-color: rgba(22, 22, 22, 0.7);
+}
+.project-card:hover {
+  cursor: pointer;
+}
+
+.issue-card{
+  color: white;
+  border: 3px outset #1C6EA4;
+  border-radius: 4px;
+  margin-bottom: 5px;
+  margin-top: 5px;
+  margin-left: 5px;
+  width: 375px;
+  border-radius: 10px;
+  background-color: rgba(22, 22, 22, 0.7);
+}
+
+.issue-card:hover {
+  cursor: pointer;
+}
+
+.login{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.login-form{
+  display: relative;
+  margin-top: 400px;
+}
+
+.project{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.issue{
+  min-height: 100vh;
+  background-size: cover;
+  background-position: center;
+}
+
+.greeting {
+  color: white;
+  text-align: center;
+  -webkit-animation: fadeIn ease 5s;
+  -moz-animation: fadeIn ease 5s;
+  -o-animation: fadeIn ease 5s;
+  -ms-animation: fadeIn ease 5s;
+  margin-top: 500px;
+  font-family: nunito;
+}
+
+.project-name {
+  color: white;
+  text-align: center;
+  margin-top: 200px ;
+}
+
+.issue-card-title {
+  display: inline-block;
+  
+  
+}
+
+.issue-card-delete {
+  color: rgba(128, 0, 0, 1) !important;
+}
+
+.issue-card-delete:hover {
+  color: red !important;
+}
+
+.issue-card-edit {
+  color: rgb(104, 104, 104) !important;
+}
+
+.issue-card-edit:hover {
+  color: rgb(2, 130, 250) !important;
+}
+
+.resolved-button {
+  color: rgb(104, 104, 104) !important;
+}
+.resolved-button:hover {
+  color: rgb(6, 201, 6) !important;
+}
+
+ /* font size for project card */
+.MuiTypography-body1 {
+  font-size: 1.5rem !important;
+}

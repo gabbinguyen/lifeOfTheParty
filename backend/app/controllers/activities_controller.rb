@@ -1,5 +1,14 @@
 class ActivitiesController < ApplicationController
-    before_action :authorized, only: [:update, :create, :destroy]
+
+    def index
+        activities = Activity.all
+        render json: activities
+    end
+
+    def show
+        activity = Activity.find(params[:id])
+        render json: activity
+    end
 
     def update
         activity = Activity.find(params[:id])
