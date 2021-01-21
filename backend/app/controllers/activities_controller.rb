@@ -32,6 +32,6 @@ class ActivitiesController < ApplicationController
     private
 
     def activity_params
-        params.require(:activity).permit(:itinerary_id, :description, :date, :time);
+        params.require(:activity).permit(:event_id, :description, :date, :time);
     end
 end

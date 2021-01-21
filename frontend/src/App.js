@@ -1,8 +1,8 @@
 import React from 'react';
-import NavBar from './components/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import LandingPage from './components/LandingPage'
 import NewEvent from './components/NewEvent'
+import NewAccom from './components/NewAccom'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
@@ -26,32 +26,14 @@ class App extends React.Component {
       }
     }
 
-    // createCart=()=>{
-    //   const newCart={
-    //       total:0.0
-    //   }
-
-    //   fetch(cartUrl,{
-    //       method: 'POST',
-    //       headers:{
-    //           'Content-Type': 'application/json',
-    //           'Auth-Key': localStorage.getItem('auth_key')
-    //       },
-    //       body: JSON.stringify(newCart)
-    //       })
-    //       .then(res=>res.json())
-    //       .then(cart=> {
-    //       localStorage.setItem('cart_id', cart.id)
-    //   })
-    // } 
 
     render(){
       return (
         <div className="App">
           <Router> 
-            {/* <NavBar handleLogin={this.handleLogin} isLoggedIn={this.state.isLoggedIn} /> */}
             <Route exact path ="/" component= {LandingPage} />
             <Route exact path ="/event" component = {NewEvent} />
+            <Route exact path ="/accommodation" component = {NewAccom} />
             <Route exact path ="/signup" component= {()=><SignUp handleLogin={this.handleLogin}/>}/>
             <Route exact path ="/login" component= {()=>{
               return <Login handleLogin={this.handleLogin}/>

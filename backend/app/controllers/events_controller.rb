@@ -4,7 +4,7 @@ class EventsController < ApplicationController
     def index
         if current_user 
             events = Event.where(user: current_user)
-            render json: events
+            render json: events, include: [:activities, :accommodations, :flights, :expenses]
         else 
             render :json => { :msg => "Please log in" }
         end
@@ -13,7 +13,8 @@ class EventsController < ApplicationController
     def show
         if current_user
             event = Event.find_by(id: params[:id])
-            render json: event
+            render json: event, include: [:activities, :accommodations, :flights, :expenses]
+        
         else
             render :json => { :msg => "Please log in"}
         end

@@ -6,7 +6,7 @@ let eventsURL = 'http://localhost:3000/events/'
 
 export default class EventContainer extends Component {
     state={
-        events: [],
+        events: []
     }
 
     componentDidMount(){
@@ -18,7 +18,9 @@ export default class EventContainer extends Component {
             }
         })
         .then(res => res.json())
-        .then(events => this.setState({events}))
+        .then(events => {
+            this.setState({events})
+        })
     }
 
     handleDelete = (event) => {
@@ -39,20 +41,6 @@ export default class EventContainer extends Component {
             events: array
         })
     }
-
-    // handleEditEvent = info => {
-    //     fetch(`http://localhost:3000/events/${event.id}`, {
-    //       method: 'PATCH',
-    //       headers: {
-    //         'Auth-Key': localStorage.getItem('auth_key'),
-    //         'Content-Type': 'application/json',
-    //         Accept: 'application/json'
-    //       },
-    //       body: JSON.stringify(info)
-    //     })
-    //       .then(res => res.json())
-    //       .then(event => console.log(event));
-    //   };
     
 
     render() {
@@ -63,6 +51,10 @@ export default class EventContainer extends Component {
                     event={event}
                     name={event.name} 
                     date={event.date} 
+                    activities={event.activities}
+                    accommodations={event.accommodations}
+                    expenses={event.expenses}
+                    flights={event.flights}
                     location={event.location}
                     handleDelete={this.handleDelete}
                     handleEditEvent={this.handleEditEvent}

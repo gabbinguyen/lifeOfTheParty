@@ -1,4 +1,5 @@
 class AccommodationsController < ApplicationController
+    before_action :authenticate!, only: [:index,:show,:update,:destroy]
 
     def index
         accommodations = Accommodation.all
@@ -21,8 +22,9 @@ class AccommodationsController < ApplicationController
 
     def create
         accommodation = Accommodation.create(accommodation_params)
-        render json: accommodation  
+        render json: accommodation
     end
+
 
     def destroy
         accommodation = Accommodation.find(params[:id])
@@ -32,6 +34,7 @@ class AccommodationsController < ApplicationController
     private
 
     def accommodation_params
-        params.require(:accommodation).permit(:itinerary_id, :location, :date);
+        params.require(:accommodation).permit(:event_id, :location, :date);
     end
 end
+

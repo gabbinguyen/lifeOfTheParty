@@ -12,6 +12,7 @@ class Dashboard extends Component {
 
     componentDidMount(){
         this.fetchEvents()
+        console.log('aksdhfadkjfb')
     }
 
     // eventHandler = (data) => {
@@ -19,23 +20,27 @@ class Dashboard extends Component {
     // }
 
     fetchEvents = () => {
+        debugger
         fetch(eventsURL, {
             method:'GET',
             headers: {'Authorization': `Bearer ${localStorage.getItem("token")}`}
         })
         .then(res => res.json())
-        .then(events => this.setState({events}))
+        .then(events => {
+            console.log(events)
+            this.setState({events})})
+        
     }
 
     render() {
-        console.log(this.state.events)
         return (
             <div>
-                This is your dashboard <br /><br />
+                This is your dashboard <br /><br /> 
+                
                 <Button href="/logout"> Log out </Button> <br /><br />
                 <Button href="/event"> New Event </Button> <br /><br />
                 Exisiting Events <br/><br/>
-                {/* <EventContainer events={this.state.events} />  */}
+                <EventContainer events={this.state.events} /> 
             </div>
         )
     }

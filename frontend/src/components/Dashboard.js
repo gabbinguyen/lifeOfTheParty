@@ -2,9 +2,7 @@ import React, { Component } from 'react'
 import {Button, Card} from 'react-bootstrap'
 import EventContainer from './EventContainer'
 
-
 class Dashboard extends Component {
-
 
     render() {
         return (

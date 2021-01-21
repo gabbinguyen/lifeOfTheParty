@@ -22,6 +22,8 @@ c2 = Collaborator.create(user_id: u1.id, event_id: e3.id)
 a1 = Activity.create(event_id: e1.id, description: "Beach", date: "05/10/2021", time: "7 PM")
 
 acc1 = Accommodation.create(event_id: e1.id, location: "Hotel Indigo", date: "05/10/2021")
+acc2 = Accommodation.create(event_id: e2.id, location: "Katie's House", date: "07/07/2021")
+
 
 f1 = Flight.create(collaborator_id: c1.id, event_id: e1.id, flight_info: "UA127", date: "05/10/2021", time: "4 PM")
 
