@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
 import {Button} from 'react-bootstrap'
 
+let eventsURL = 'http://localhost:3000/events/'
+let eventsJSON = []
+let eventID = ""
 
 export default class NewEvent extends Component {
     constructor(){
@@ -8,7 +11,8 @@ export default class NewEvent extends Component {
         this.state = {
             name: '',
             date: '',
-            location: ''
+            location: '',
+            event: ' '
         }
     }
 
@@ -37,8 +41,36 @@ export default class NewEvent extends Component {
         })
         .then(res=>res.json())
         .then(event=>{this.props.history.push('/dashboard')})
+        this.fetchLastEvent()
     }
-    
+
+    fetchLastEvent() {
+        fetch(eventsURL, {
+            method:'GET',
+            headers:{
+                'Content-Type': 'application/json',
+                'Auth-Key': localStorage.getItem('auth_key')
+            }
+        })
+        .then(res => res.json())
+        .then(function(json){
+              eventsJSON = json;
+              eventID = eventsJSON[eventsJSON.length -1]
+              const newCollab={
+                event_id: eventID.id,
+                user_id: eventID.user_id
+            }
+            fetch("http://localhost:3000/collaborators", {
+                method: "POST",
+                headers:{
+                    'Content-Type': 'application/json',
+                    'Auth-Key': localStorage.getItem('auth_key')
+                },
+                body: JSON.stringify(newCollab)
+            })
+                .then(res => res.json())
+            })      
+    }
 
     render() {
         return (

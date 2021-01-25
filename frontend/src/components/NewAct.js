@@ -38,8 +38,13 @@ export default class NewAct extends Component {
             body: JSON.stringify(newAct)
         })
         .then(res=>res.json())
-        .then(console.log(newAct))
-        .then(event=>{this.props.newAct(this.state)})
+        .then(json=>this.props.newAct(json))
+        this.setState({
+            event_id: " ",
+            description: '',
+            date: '',
+            time: ' '
+        })
     }
 
     render() {

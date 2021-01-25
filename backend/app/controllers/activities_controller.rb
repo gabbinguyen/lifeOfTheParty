@@ -7,7 +7,7 @@ class ActivitiesController < ApplicationController
 
     def show
         activity = Activity.find(params[:id])
-        render json: activity
+        render json: activity, include: [:event]
     end
 
     def update
@@ -21,7 +21,8 @@ class ActivitiesController < ApplicationController
 
     def create
         activity = Activity.create(activity_params)
-        render json: activity  
+        events = Event.where(user: current_user)
+        render json: events, include: [:activities, :accommodations, :expenses => {:include => [:collaborator => {:include => [:user]}]}, :collaborators => {:include => [:user, :flight => {:only => [:flight_info]}]}, :flights => {:include => [:collaborator => {:include => [:user]}]}]
     end
 
     def destroy

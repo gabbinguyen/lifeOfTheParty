@@ -8,7 +8,7 @@ class AccommodationsController < ApplicationController
 
     def show
         accommodation = Accommodation.find(params[:id])
-        render json: accommodation
+        render json: accommodation, include: [:event]
     end
 
     def update
@@ -22,7 +22,8 @@ class AccommodationsController < ApplicationController
 
     def create
         accommodation = Accommodation.create(accommodation_params)
-        render json: accommodation
+        events = Event.where(user: current_user)
+        render json: events, include: [:activities, :accommodations, :expenses => {:include => [:collaborator => {:include => [:user]}]}, :collaborators => {:include => [:user, :flight => {:only => [:flight_info]}]}, :flights => {:include => [:collaborator => {:include => [:user]}]}]
     end
 
 

@@ -1,13 +1,13 @@
 class FlightsController < ApplicationController
     def index
         flights = Flight.all
-        render json: flights
+        render json: flights, include: [:collaborator]
     end
 
     def show
         flight = Flight.find(params[:id])
-        render json: flight
-    end
+        render json: flight, include: [:event, :collaborator => {:include => [:user]}] 
+        end
 
 
     def update
@@ -21,7 +21,8 @@ class FlightsController < ApplicationController
 
     def create
         flight = Flight.create(flight_params)
-        render json: flight  
+        events = Event.where(user: current_user)
+        render json: events, include: [:activities, :accommodations, :expenses => {:include => [:collaborator => {:include => [:user]}]}, :collaborators => {:include => [:user, :flight => {:only => [:flight_info]}]}, :flights => {:include => [:collaborator => {:include => [:user]}]}]
     end
 
     def destroy
@@ -32,6 +33,6 @@ class FlightsController < ApplicationController
     private
 
     def flight_params
-        params.require(:flight).permit(:event_id, :flight_info, :date, :time);
+        params.require(:flight).permit(:collaborator_id, :event_id, :flight_info, :date, :time);
     end
 end

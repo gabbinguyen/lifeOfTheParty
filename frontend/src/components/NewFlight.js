@@ -9,7 +9,8 @@ export default class NewFlight extends Component {
             event_id: " ",
             flight_info: '',
             date: '',
-            time: ''
+            time: '',
+            collaborator_id: " "
         }
     }
 
@@ -24,6 +25,7 @@ export default class NewFlight extends Component {
     handleSubmit=(e)=>{
         e.preventDefault()
         const newFlight={
+            collaborator_id: this.props.filter,
             event_id: this.props.event_id,
             flight_info: this.state.flight_info,
             date: this.state.date,
@@ -38,19 +40,25 @@ export default class NewFlight extends Component {
             body: JSON.stringify(newFlight)
         })
         .then(res=>res.json())
-        .then(console.log(newFlight))
-        .then(event=>{this.props.newFlight(this.state)})
+        .then(json=>this.props.newFlight(json))
+        this.setState({
+            event_id: " ",
+            flight_info: '',
+            date: '',
+            time: ' ',
+            collaborator_id: " "
+        })
     }
 
     render() {
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>
-                <input type="text" name="flight_info" value={this.state.flight_info} placeholder ="Flight Number" onChange={this.handleChange}/><br></br>        
-                <input type="text" name="date" value={this.state.date} placeholder= "Date" onChange={this.handleChange}/><br></br>
-                <input type="text" name="time" value={this.state.time} placeholder= "Time" onChange={this.handleChange}/><br></br>
-                <Button type="submit" text-align="center">Submit</Button>
-            </form>  
+                    <input type="text" name="flight_info" value={this.state.flight_info} placeholder ="Flight Number" onChange={this.handleChange}/><br></br>        
+                    <input type="text" name="date" value={this.state.date} placeholder= "Date" onChange={this.handleChange}/><br></br>
+                    <input type="text" name="time" value={this.state.time} placeholder= "Time" onChange={this.handleChange}/><br></br>
+                    <Button type="submit" text-align="center">Submit</Button>
+                </form>  
             </div>
         )
     }

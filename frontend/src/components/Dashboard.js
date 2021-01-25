@@ -11,7 +11,7 @@ class Dashboard extends Component {
                 <Button href="/logout"> Log out </Button> <br /><br />
                 <Button href="/event"> New Event </Button> <br /><br />
                 Exisiting Events <br/><br/>
-                <EventContainer/> 
+                <EventContainer /> 
             </div>
         )
     }

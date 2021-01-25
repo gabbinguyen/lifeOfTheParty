@@ -36,9 +36,16 @@ export default class NewAccom extends Component {
             body: JSON.stringify(newAccom)
         })
         .then(res=>res.json())
-        .then(console.log(newAccom))
-        .then(event=>{this.props.newAccom(this.state)})
+        .then(json=>this.props.newAccom(json))
+        this.setState({
+            event_id: " ",
+            location: '',
+            date: ''
+        })
     }
+
+  
+
 
     render() {
         return (

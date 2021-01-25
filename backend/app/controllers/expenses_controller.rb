@@ -1,12 +1,12 @@
 class ExpensesController < ApplicationController
     def index
         expenses = Expense.all
-        render json: expenses
+        render json: expenses, include: [:collaborator => {:include => [:user]}]
     end
 
     def show
         expense = Expense.find(params[:id])
-        render json: expense
+        render json: expense, include: [:event, :collaborator => {:include => [:user]}]
     end
 
     def update
@@ -20,7 +20,8 @@ class ExpensesController < ApplicationController
 
     def create
         expense = Expense.create(expense_params)
-        render json: expense  
+        events = Event.where(user: current_user)
+        render json: events, include: [:activities, :accommodations, :expenses => {:include => [:collaborator => {:include => [:user]}]}, :collaborators => {:include => [:user, :flight => {:only => [:flight_info]}]}, :flights => {:include => [:collaborator => {:include => [:user]}]}]
     end
 
     def destroy
