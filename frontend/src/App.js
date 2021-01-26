@@ -7,7 +7,7 @@ import SignUp from './components/SignUp'
 import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
-
+import 'semantic-ui-css/semantic.min.css'
 
 class App extends React.Component { 
     state = {
@@ -31,7 +31,8 @@ class App extends React.Component {
       return (
         <div className="App">
           <Router> 
-            <Route exact path ="/" component= {LandingPage} />
+            {/* <LandingPage handleLogin={this.handleLogin} isLoggedIn={this.state.isLoggedIn} /> */}
+            <Route exact path ="/" component= {()=><LandingPage handleLogin={this.handleLogin}/>}/>
             <Route exact path ="/event" component = {NewEvent} />
             <Route exact path ="/accommodation" component = {NewAccom} />
             <Route exact path ="/signup" component= {()=><SignUp handleLogin={this.handleLogin}/>}/>

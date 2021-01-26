@@ -7,7 +7,7 @@ class SessionsController < ApplicationController
         token = JWT.encode(payload,'secretkey','HS256')
         render :json => {auth_key: token}
         else
-            render :json => {msg: "Login failed, enter correct credentials"}
+            render :json => {msg: "Looks like we don't have an account with this email or password in our database - please create an account or log in with different credentials."}
         end    
     end        
 end

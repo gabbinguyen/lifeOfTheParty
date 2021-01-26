@@ -1,7 +1,9 @@
 import React from 'react'
 import { Component } from 'react';
 import {withRouter} from 'react-router';
-import {Button} from 'react-bootstrap'
+// import {Button} from 'react-bootstrap'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
+
 
 class Login extends Component {
   constructor(){
@@ -48,13 +50,15 @@ class Login extends Component {
 
   render(){
     return (
-        
-        <form onSubmit={this.handleSubmit}>
-            <input type="text" name="email" value={this.state.email} placeholder ="Email" onChange={this.handleChange}/><br></br>        
-            <input type="password" name="password" value={this.state.password} placeholder= "Password" onChange={this.handleChange}/><br></br>
-            <Button type="submit" text-align="center">Submit</Button>
-            <h4>{this.state.errorMsg}</h4>
-        </form>
+        <Form onSubmit={this.handleSubmit}>
+            <Form.Field onChange={this.handleChange}>
+                <input type="text" name="email" value={this.state.email}  placeholder='Email' />
+            </Form.Field>
+            <Form.Field onChange={this.handleChange}>
+                <input type="password" name="password" value={this.state.password} placeholder='Password' />
+            </Form.Field>
+            <Button type='submit'>Submit</Button>
+        </Form>
     )
   }
 }
