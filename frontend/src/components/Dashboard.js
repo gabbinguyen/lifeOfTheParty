@@ -1,17 +1,13 @@
 import React, { Component } from 'react'
 import {Button, Card} from 'react-bootstrap'
-import EventContainer from './EventContainer'
+import ControlPanel from './ControlPanel'
 
 class Dashboard extends Component {
 
     render() {
         return (
             <div>
-                This is your dashboard <br /><br />
-                <Button href="/logout"> Log out </Button> <br /><br />
-                <Button href="/event"> New Event </Button> <br /><br />
-                Exisiting Events <br/><br/>
-                <EventContainer /> 
+                <ControlPanel/> 
             </div>
         )
     }
@@ -19,4 +15,5 @@ class Dashboard extends Component {
 
 
 export default Dashboard
+
 

@@ -21,7 +21,6 @@ export default class AddCollab extends Component {
     handleSubmit=(e)=>{
         e.preventDefault()
         let user = this.props.users.filter(user => user.name == this.state.name)
-        console.log(user[0].id)
         let newCollab = {
             user_id: user[0].id,
             event_id: this.props.event.id
@@ -43,7 +42,6 @@ export default class AddCollab extends Component {
     }
 
     render() {
-        console.log(this.state)
         return (
             <div>
                 <form onSubmit={this.handleSubmit}>

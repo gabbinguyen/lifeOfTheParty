@@ -6,7 +6,8 @@ import Middle from '../images/Middle.gif'
 import Last from '../images/Last.gif'
 import Login from './Login.js'
 import SignUp from './SignUp.js'
-
+import ScrollUpButton from "react-scroll-up-button";
+import { FaArrowCircleUp } from 'react-icons/fa';
 
 
 export default function LandingPage(props) {
@@ -21,12 +22,11 @@ export default function LandingPage(props) {
         <div>
         <Jumbotron fluid style={{ backgroundImage: `url(${Hero})`, backgroundSize: 'cover' }}> 
         <Container>         
-        <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/>
-        
+        <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> 
         <Row> 
             <Col></Col>
             <Col xs={7}> 
-            <Button variant="info" onClick={handleShow} > Get Started </Button>
+            <Button variant="info" onClick={handleShow} size='big'> Get Started </Button>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>
                 </Modal.Header>
@@ -59,7 +59,7 @@ export default function LandingPage(props) {
             </Modal>
             </Col>
         </Row>
-        
+        <br/> <br/><br/> <br/>
             {/* <Button href='/signup'> Sign up</Button> <br /> <br />
             <Button href='/login'> Log in</Button> */}
         
@@ -73,6 +73,17 @@ export default function LandingPage(props) {
         <Jumbotron fluid style={{ backgroundImage: `url(${Last})`, backgroundSize: 'cover' }}> 
         <Container>         
         <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/> <br/><br/> <br/> <br/> <br/>
+        
+        <Row>
+            <Col> </Col>
+            <Col> 
+            <ScrollUpButton style={{width: 25}} ContainerClassName="ScrollUpButton__Container" TransitionClassName="ScrollUpButton__Toggled">
+            <FaArrowCircleUp color="#2A0A5E" size="30"/>
+            </ScrollUpButton> 
+            </Col>
+        </Row> 
+
+
        </Container>
         </Jumbotron>
         </div>

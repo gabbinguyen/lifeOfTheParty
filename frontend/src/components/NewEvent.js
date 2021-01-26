@@ -1,5 +1,16 @@
 import React, { Component } from 'react'
-import {Button} from 'react-bootstrap'
+// import {Button} from 'react-bootstrap'
+import { Button, Form, Grid, Segment} from 'semantic-ui-react'
+import {
+    DateInput,
+    TimeInput,
+    DateTimeInput,
+    DatesRangeInput
+  } from 'semantic-ui-calendar-react';
+
+import SemanticDatepicker from 'react-semantic-ui-datepickers';
+import 'react-semantic-ui-datepickers/dist/react-semantic-ui-datepickers.css';
+ 
 
 let eventsURL = 'http://localhost:3000/events/'
 let eventsJSON = []
@@ -21,7 +32,14 @@ export default class NewEvent extends Component {
         this.setState({
             [name]: value
         })
+        console.log(this.state)
     }
+
+    handleCalChange = (event, {name, value}) => {
+        if (this.state.hasOwnProperty(name)) {
+          this.setState({ date: value });
+        }
+      }
 
 
     handleSubmit=(e)=>{
@@ -75,12 +93,33 @@ export default class NewEvent extends Component {
     render() {
         return (
             <div>
-            <form onSubmit={this.handleSubmit}>
+
+                <Grid> 
+                    <Grid.Column width ={9}> 
+                    <Form size="huge" onSubmit={this.handleSubmit}> 
+                        <Form.Field onChange={this.handleChange}> 
+                        <input type="text" name="name" value={this.state.name} placeholder ="Type of Event" />
+                        </Form.Field>
+                        <Form.Field onChange={this.handleChange}> 
+                        <input type="text" name="location" value={this.state.location} placeholder= "Location" />
+                        </Form.Field>
+                        <Form.Field > 
+                            <DateInput inline name = "date" value={this.state.date} onChange={this.handleCalChange} />
+                        </Form.Field>
+                        <Button  size="huge" type="submit" text-align="center">Submit</Button>
+                    </Form>
+                    </Grid.Column>
+
+                    <Grid.Column width ={1}> 
+                    </Grid.Column>
+                </Grid>
+
+            {/* <form onSubmit={this.handleSubmit}>
                 <input type="text" name="name" value={this.state.name} placeholder ="Type of Event" onChange={this.handleChange}/><br></br>        
                 <input type="text" name="date" value={this.state.date} placeholder= "Date" onChange={this.handleChange}/><br></br>
                 <input type="text" name="location" value={this.state.location} placeholder= "Location" onChange={this.handleChange}/><br></br>
                 <Button type="submit" text-align="center">Submit</Button>
-            </form>            
+            </form>             */}
         </div>
         )
     }

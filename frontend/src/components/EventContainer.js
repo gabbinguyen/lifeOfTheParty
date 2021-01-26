@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import EventCard from './EventCard'
 import {Button, Card, Row, Col} from 'react-bootstrap'
+import ControlPanel from './ControlPanel'
 
 let eventsURL = 'http://localhost:3000/events/'
 let usersURL = "http://localhost:3000/users/"
@@ -227,7 +228,6 @@ handleExpenseDelete = (expense) => {
         return (
             <div>
             {this.state.events.map(event => 
-                <Card > 
                     <EventCard 
                         users={this.state.users}
                         key={event.id}
@@ -253,8 +253,7 @@ handleExpenseDelete = (expense) => {
                         expenseDelete={this.handleExpenseDelete}
                         handleEditEvent={this.handleEditEvent}
                         />
-                </Card> 
-            )}
+            )} 
             </div>
         )
     }
