@@ -25,11 +25,10 @@ class EventsController < ApplicationController
     def create
         event = Event.new(event_params)
         event.user = current_user
-        if event.save
-            render :json => event.as_json(only: [:name, :date, :location])
-        else
-            render :json => { :msg => "Could not create event"}
-        end
+        event.save
+        collaborator = Collaborator.create(user_id: current_user.id, event_id: event.id)
+        events = Event.where(user: current_user)
+        render json: events, include: [:activities, :accommodations, :expenses => {:include => [:collaborator => {:include => [:user]}]}, :collaborators => {:include => [:user, :flight => {:only => [:flight_info]}]}, :flights => {:include => [:collaborator => {:include => [:user]}]}]
     end
     
     def update

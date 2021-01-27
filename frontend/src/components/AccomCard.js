@@ -1,24 +1,17 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {Button, Row, Col} from 'react-bootstrap'
+import {Icon, Grid } from 'semantic-ui-react'
+
 import NewAccom from './NewAccom.js'
 
-export default class AccomCard extends Component {
 
-    render() {
-        return (
-            <div>
-            {this.props.location} <br/> 
-            {this.props.date} <br/> 
-            <Button onClick={() => this.props.accomDelete(this.props.accommodation)} > Delete Accommodation </Button>
-            {/* <Row> 
-                <Col> <Button> 
-                    <NewAccom 
-                    event_id={this.props.event.id} 
-                    newAccom={this.props.newAccom}
-                    /> 
-                </Button></Col>                 
-            </Row> */}
-            </div>
-        )
-    }
+export default function AccomCard(props) {
+    return (
+        <div>
+             <Icon name='remove' size='small' onClick={() => props.accomDelete(props.accommodation)} /><br/>
+            {props.location} <br/> 
+            {props.date} <br/>
+        </div>
+    )
 }
+

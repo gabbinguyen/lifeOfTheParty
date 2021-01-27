@@ -1,6 +1,11 @@
 import React, { Component } from 'react'
-import {Button} from 'react-bootstrap'
-
+import { Button, Checkbox, Form } from 'semantic-ui-react'
+import {
+    DateInput,
+    TimeInput,
+    DateTimeInput,
+    DatesRangeInput
+  } from 'semantic-ui-calendar-react';
 
 export default class NewAccom extends Component {
     constructor(){
@@ -18,6 +23,12 @@ export default class NewAccom extends Component {
             [name]: value
         })
     }
+
+    handleCalChange = (event, {name, value}) => {
+        if (this.state.hasOwnProperty(name)) {
+          this.setState({ date: value });
+        }
+      }
 
 
     handleSubmit=(e)=>{
@@ -50,11 +61,15 @@ export default class NewAccom extends Component {
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                <input type="text" name="location" value={this.state.location} placeholder ="Location" onChange={this.handleChange}/><br></br>        
-                <input type="text" name="date" value={this.state.date} placeholder= "Date" onChange={this.handleChange}/><br></br>
-                <Button type="submit" text-align="center">Submit</Button>
-            </form>  
+                <Form onSubmit={this.handleSubmit}> 
+                    <Form.Field onChange={this.handleChange}>
+                        <input type="text" name="location" value={this.state.location} placeholder ="Location" ></input>
+                    </Form.Field >
+                    <Form.Field > 
+                            <DateInput inline name = "date" value={this.state.date} onChange={this.handleCalChange} />
+                    </Form.Field>
+                    <Button type="submit" text-align="center">Submit</Button>
+                </Form> <br/>              
             </div>
         )
     }

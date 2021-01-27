@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import {Button, GridColumn} from 'semantic-ui-react'
+import React, { useState } from 'react'
+import {Row, Col, Modal} from 'react-bootstrap'
 import AccomCard from './AccomCard.js'
 import ActCard from './ActCard.js'
 import FlightCard from './FlightCard.js'
@@ -10,136 +10,147 @@ import AddCollab from './AddCollab.js'
 import ExpenseCard from './ExpenseCard.js'
 import ExpenseCRUD from './ExpenseCRUD.js'
 import NewAccom from './NewAccom.js'
-import { Card, Grid } from 'semantic-ui-react'
-
-export default class EventCard extends Component {
-    
-    render() {
-        return (
-            <div>
-            <Grid> 
-                <Grid.Column width={6}> 
-                    <Card > 
-                    <h5>{this.props.name} <br/> </h5>
-                    {this.props.date} <br/> 
-                    {this.props.location} <br/><br/>
-
-                    <Button  > Show Details </Button> 
-                    <Button onClick={() => this.props.handleDelete(this.props.event)} > Delete Event </Button> 
-                    </Card> <br/>
-                 </Grid.Column>
-                 <Grid.Column width={10}>
-                     <Card> 
-                        {/* COLLABORATORS  */}
-                                    
-                        <h6>Collaborators</h6>
-                        {this.props.collaborators.map(collaborator=> 
-                        <CollabCard 
-                            collaborator={collaborator}
-                            name={collaborator.user.name}
-                            collabDelete={this.props.collabDelete}
-                        />                
-                        )} <br/>
-                        <Button > <AddCollab users={this.props.users} event={this.props.event} addCollab={this.props.addCollab}/> </Button>
+import { Button, Card, Grid, Icon } from 'semantic-ui-react'
+import { AiOutlineUsergroupAdd } from 'react-icons/ai'
+import NewAccomModal from './NewAccomModal.js'
 
 
+export default function EventCard(props) {
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-                        {/* ACCOMODATIONS  */}
+    const collabMap = props.collaborators.map(collaborator=> 
+        <CollabCard 
+            collaborator={collaborator}
+            name={collaborator.user.name}
+            collabDelete={props.collabDelete}
+        />)
 
-                        <h6> Accommodations</h6>
-                        {this.props.accommodations.map(accommodation => 
+    const col1 = []
+        for (let i = 0; i < collabMap.length; i+=4) {
+            col1.push(collabMap[i])
+        } 
+    const col2 = []
+        for (let i = 1; i < collabMap.length; i+=4) {
+            col2.push(collabMap[i])
+        } 
+    const col3 = []
+        for (let i = 2; i < collabMap.length; i+=4) {
+            col3.push(collabMap[i])
+        } 
+    const col4 = []
+        for (let i = 3; i < collabMap.length; i+=4) {
+            col4.push(collabMap[i])
+        } 
 
-                            <AccomCard 
-                            event={this.props.event} 
-                            accommodation={accommodation} 
-                            location={accommodation.location} 
-                            date={accommodation.date} 
-                            accomDelete={this.props.accomDelete}
-                            /> 
-                            )}
-                            <br/>
-                        <Button> 
-                                <NewAccom 
-                                event_id={this.props.event.id} 
-                                newAccom={this.props.newAccom}
-                                /> 
-                            </Button>
+    return (
+        <div>
+        <Grid> 
+            <Grid.Column width={4}> 
+                <Card > 
+                <h5>{props.name} <br/> </h5>
+                {props.date} <br/> 
+                {props.location} <br/><br/>
 
-                        {/* ACTIVITIES */}
+                <Button  > Show Details </Button> 
+                <Button onClick={() => props.handleDelete(props.event)} > Delete Event </Button> 
+                </Card> <br/>
+            </Grid.Column>
+
+{/* COL1  */}
+    {/* COLLABORATORS */}
+            <Grid.Column width={5}>
+                <Card> 
+                    <h6>Collaborators</h6>
+                    <Grid> 
+                        <Grid.Column width={2}> 
+                        </Grid.Column>
+                        <Grid.Column width={3}>
+                        {col1} 
+                        </Grid.Column>
+                        <Grid.Column width={3}>
+                        {col2}
+                        </Grid.Column>
+                        <Grid.Column width={3}> 
+                        {col3}
+                        </Grid.Column>
+                        <Grid.Column width={3}>
+                        {col4}
+                        </Grid.Column>
+                    </Grid>
+                    <br/>
+
+                    <Button variant="info" onClick={handleShow}>
+                        <AiOutlineUsergroupAdd size={25} />  
+                    </Button>
+                        <Modal show={show} onHide={handleClose}>
+                            <Modal.Header closeButton>
+                            </Modal.Header>
+                            <Modal.Body>
+                                <AddCollab users={props.users} event={props.event} addCollab={props.addCollab}/>
+                            </Modal.Body>
+                        </Modal>
+                </Card>
+
+
+    {/* ACCOMODATIONS */}
+
+                <Card> 
+                <h6> Accommodations</h6>
+                    {props.accommodations.map(accommodation => 
+
+                        <AccomCard 
+                        event={props.event} 
+                        accommodation={accommodation} 
+                        location={accommodation.location} 
+                        date={accommodation.date} 
+                        accomDelete={props.accomDelete}
+                        event_id={props.event.id} 
+                        newAccom={props.newAccom}
+                        /> 
+                        )}
+                        <br/>
+                        <NewAccomModal               
+                        event_id={props.event.id} 
+                        newAccom={props.newAccom}
+                        />
+                </Card>
+            </Grid.Column>
+
+{/* END COL1 */}
+
+{/* COL 2 */}                     
+{/* ACTIVITIES */}
+
+            <Grid.Column width={6} > 
+            <Card> 
 
                         <h6> Activities </h6>
-                        {this.props.activities.map(activity=> 
+                        {props.activities.map(activity=> 
                             <ActCard 
-                            event={this.props.event} 
+                            event={props.event} 
                             activity={activity}
                             description={activity.description}
                             date={activity.date}
                             time={activity.time}
-                            actDelete={this.props.actDelete}
+                            actDelete={props.actDelete}
                             /> 
                             )} <br/>
                             
                         <Button> 
                             <ActCRUD 
-                            event_id={this.props.event.id} 
-                            activities={this.props.activities}
-                            newAct={this.props.newAct}
+                            event_id={props.event.id} 
+                            activities={props.activities}
+                            newAct={props.newAct}
                             /> 
                         </Button> <br /> 
+                </Card>
+            </Grid.Column>
+{/* Insert below here */}                
+  
+        </Grid>  
 
-                        {/* FLIGHTS */}
-
-                        <h6> Flights </h6>
-                        {this.props.flights.map(flight => 
-                            <FlightCard 
-                            collabname={flight.collaborator.user.name}
-                            event={this.props.event} 
-                            flight = {flight}
-                            flight_info={flight.flight_info} 
-                            date={flight.date} 
-                            time={flight.time}
-                            flightDelete={this.props.flightDelete} 
-                        /> 
-                        )} <br/>
-
-                        <Button> 
-                            <FlightCRUD 
-                            event_id={this.props.event.id}
-                            flights={this.props.flights}
-                            newFlight={this.props.newFlight}
-                            collaborators={this.props.collaborators}
-                            /> 
-                        </Button>
-
-                        {/* EXPENSE */}
-
-                        <h6> Expenses</h6> 
-                        {this.props.expenses.map(expense => 
-                            <ExpenseCard 
-                            expense={expense}
-                            event={this.props.event} 
-                            name={expense.collaborator.user.name}
-                            description={expense.description}
-                            total={expense.total}
-                            expenseDelete={this.props.expenseDelete}
-
-                            />
-                            )} <br/>
-                            
-                            <Button> 
-                            <ExpenseCRUD 
-                            event_id={this.props.event.id}
-                            expenses={this.props.expenses}
-                            newExpense={this.props.newExpense}
-                            collaborators={this.props.collaborators}
-                            expenseDelete={this.props.expenseDelete}
-                            /> 
-                            </Button>
-                     </Card>
-                 </Grid.Column>
-            </Grid>  
-
-            </div>
-        )
-    }
+    </div>
+    )
 }

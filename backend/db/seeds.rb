@@ -15,6 +15,10 @@ u4 = User.create(name: "Lili Garcia", email: "liligarcia@gmail.com", password: "
 u5 = User.create(name: "Bryana Dorfman", email: "bryanadorfman@gmail.com", password: "password")
 u6 = User.create(name: "Heather Ward", email: "heatherward@gmail.com", password: "password")
 u7 = User.create(name: "Katie Aamoth", email: "katieaamoth@gmail.com", password: "password")
+u8 = User.create(name: "Dylin Anderson", email: "dylinandseron@gmail.com", password: "password")
+u9 = User.create(name: "Staten Harmon", email: "statenharmon@gmail.com", password: "password")
+u10 = User.create(name: "Thao Nguyen", email: "statenharmon@gmail.com", password: "password")
+u11 = User.create(name: "Kyle Cartwright", email: "kylecartwright@gmail.com", password: "password")
 
 
 e1 = Event.create(user_id: u1.id, name: "Bachelorette Party", date: "05/10/2021", location: "Miami")

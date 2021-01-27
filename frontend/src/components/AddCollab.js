@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button, Col} from 'react-bootstrap'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 
 let usersURL = "http://localhost:3000/users/"
@@ -39,16 +39,21 @@ export default class AddCollab extends Component {
             email: ' ',
             name: ' '
         })
+        
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
-                <input type="text" name="name" value={this.state.name} placeholder ="Name" onChange={this.handleChange}/><br></br>        
-                <input type="text" name="email" value={this.state.date} placeholder= "Email" onChange={this.handleChange}/><br></br>
-                <Button type="submit" text-align="center">Add A Collaborator</Button>
-            </form>     
+                <Form onSubmit={this.handleSubmit}> 
+                    <Form.Field onChange={this.handleChange}>
+                        <input type="text" name="name" value={this.state.name} placeholder ="Name"></input>
+                    </Form.Field >
+                    <Form.Field onChange={this.handleChange}>
+                    <input type="text" name="email" value={this.state.date} placeholder= "Email"></input>
+                    </Form.Field >
+                    <Button type="submit" text-align="center">Add</Button>
+                </Form>
             </div>
         )
     }

@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import EventCard from './EventCard'
 import {Button, Card, Row, Col} from 'react-bootstrap'
 import ControlPanel from './ControlPanel'
+import NewEvent from './NewEvent'
+import NewEventModal from './NewEventModal'
+
 
 let eventsURL = 'http://localhost:3000/events/'
 let usersURL = "http://localhost:3000/users/"
@@ -38,6 +41,10 @@ export default class EventContainer extends Component {
     }
 
 // New Attribute Handlers 
+
+    newEventHandler = (data) => {
+        this.setState({events: data})
+    }
 
     addCollabHandler = (data) => {
         this.setState({events: data})
@@ -227,6 +234,8 @@ handleExpenseDelete = (expense) => {
     render() {
         return (
             <div>
+                <NewEventModal newEvent={this.newEventHandler}  /> <br/>
+                {/* <NewEvent newEvent={this.newEventHandler} />  */}
             {this.state.events.map(event => 
                     <EventCard 
                         users={this.state.users}

@@ -32,7 +32,6 @@ export default class NewEvent extends Component {
         this.setState({
             [name]: value
         })
-        console.log(this.state)
     }
 
     handleCalChange = (event, {name, value}) => {
@@ -58,37 +57,38 @@ export default class NewEvent extends Component {
             body: JSON.stringify(newEvent)
         })
         .then(res=>res.json())
-        .then(event=>{this.props.history.push('/dashboard')})
-        this.fetchLastEvent()
+        .then(json=>this.props.newEvent(json))
+        // .then(event=>{this.props.history.push('/dashboard')})
+        // this.fetchLastEvent()
     }
 
-    fetchLastEvent() {
-        fetch(eventsURL, {
-            method:'GET',
-            headers:{
-                'Content-Type': 'application/json',
-                'Auth-Key': localStorage.getItem('auth_key')
-            }
-        })
-        .then(res => res.json())
-        .then(function(json){
-              eventsJSON = json;
-              eventID = eventsJSON[eventsJSON.length -1]
-              const newCollab={
-                event_id: eventID.id,
-                user_id: eventID.user_id
-            }
-            fetch("http://localhost:3000/collaborators", {
-                method: "POST",
-                headers:{
-                    'Content-Type': 'application/json',
-                    'Auth-Key': localStorage.getItem('auth_key')
-                },
-                body: JSON.stringify(newCollab)
-            })
-                .then(res => res.json())
-            })      
-    }
+    // fetchLastEvent() {
+    //     fetch(eventsURL, {
+    //         method:'GET',
+    //         headers:{
+    //             'Content-Type': 'application/json',
+    //             'Auth-Key': localStorage.getItem('auth_key')
+    //         }
+    //     })
+    //     .then(res => res.json())
+    //     .then(function(json){
+    //           eventsJSON = json;
+    //           eventID = eventsJSON[eventsJSON.length -1]
+    //           const newCollab={
+    //             event_id: eventID.id,
+    //             user_id: eventID.user_id
+    //         }
+    //         fetch("http://localhost:3000/collaborators", {
+    //             method: "POST",
+    //             headers:{
+    //                 'Content-Type': 'application/json',
+    //                 'Auth-Key': localStorage.getItem('auth_key')
+    //             },
+    //             body: JSON.stringify(newCollab)
+    //         })
+    //             .then(res => res.json())
+    //         })      
+    // }
 
     render() {
         return (
@@ -98,7 +98,7 @@ export default class NewEvent extends Component {
                     <Grid.Column width ={9}> 
                     <Form size="huge" onSubmit={this.handleSubmit}> 
                         <Form.Field onChange={this.handleChange}> 
-                        <input type="text" name="name" value={this.state.name} placeholder ="Type of Event" />
+                        <input type="text" name="name" value={this.state.name} placeholder ="Event" />
                         </Form.Field>
                         <Form.Field onChange={this.handleChange}> 
                         <input type="text" name="location" value={this.state.location} placeholder= "Location" />

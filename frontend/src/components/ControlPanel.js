@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react'
 import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Tabs from '@material-ui/core/Tabs';
@@ -58,6 +58,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ControlPanel(props) {
+
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+  
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
 
@@ -88,8 +93,7 @@ export default function ControlPanel(props) {
       >
         <Tab style={style} label="Life of the Party" {...a11yProps(0)} />
         <Tab style={style2} label="Dashboard" {...a11yProps(1)} />
-        <Tab label="Create an Event" href="/event" {...a11yProps(2)} />
-        <Tab label="Logout" href="/logout" />
+        <Tab style={style2} label="Logout" href="/logout" />
       </Tabs>
 
 
@@ -105,7 +109,6 @@ export default function ControlPanel(props) {
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-            <NewEvent/>       
       </TabPanel>
 
 
