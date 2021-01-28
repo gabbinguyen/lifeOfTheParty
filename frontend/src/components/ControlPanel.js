@@ -49,7 +49,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     backgroundColor: "#F3DFA2",
     display: 'flex',
-    height: 1000,
+    height: 2000,
+    
   },
   tabs: {
     borderRight: `1px solid ${theme.palette.divider}`,
@@ -82,7 +83,6 @@ export default function ControlPanel(props) {
  
   return (
     <div className={classes.root}>
-        {console.log(props.name)}
       <Tabs
         orientation="vertical"
         variant="scrollable"
@@ -110,7 +110,7 @@ export default function ControlPanel(props) {
 
       <TabPanel value={value} index={2}>
       </TabPanel>
-
+    
 
     </div>
   );

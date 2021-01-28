@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import EventCard from './EventCard'
+import EventCard2 from './EventCard2'
 import {Button, Card, Row, Col} from 'react-bootstrap'
 import ControlPanel from './ControlPanel'
 import NewEvent from './NewEvent'
@@ -237,7 +237,7 @@ handleExpenseDelete = (expense) => {
                 <NewEventModal newEvent={this.newEventHandler}  /> <br/>
                 {/* <NewEvent newEvent={this.newEventHandler} />  */}
             {this.state.events.map(event => 
-                    <EventCard 
+                    <EventCard2 
                         users={this.state.users}
                         key={event.id}
                         event={event}

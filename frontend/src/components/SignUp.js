@@ -33,7 +33,7 @@ class SignUp extends Component {
             }
         }
 
-        fetch('http://localhost:3000/signup',{
+        fetch('http://localhost:3000/login',{
             method: 'POST',
             headers:{
                 'Content-Type': 'application/json'

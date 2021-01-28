@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Checkbox, Form, Grid } from 'semantic-ui-react'
 import {
     DateInput,
     TimeInput,
@@ -86,8 +86,13 @@ export default class NewFlight extends Component {
                     <Form.Field > 
                             <DateInput inline name = "date"  value={this.state.date} onChange={this.handleCalChange} />
                     </Form.Field>
-                    <Form.Field  > 
-                        <TimePicker name="time" showSecond={false} defaultValue={now} onChange={this.handleTimeChange}  use12Hours/>
+                    <Form.Field > 
+                        <Grid> 
+                            <Grid.Row> </Grid.Row>
+                            <Grid.Column width={5} />
+                             <TimePicker name="time" showSecond={false} defaultValue={now} onChange={this.handleTimeChange}  use12Hours/>
+                             <Grid.Row> </Grid.Row>
+                        </Grid>
                     </Form.Field>
                     <Button fluid type="submit" text-align="center">Submit</Button>
                 </Form> <br/>   
