@@ -39,6 +39,7 @@ export default class AddCollab extends Component {
             email: ' ',
             name: ' '
         })
+        this.props.handleClose()
         
     }
 
@@ -52,7 +53,7 @@ export default class AddCollab extends Component {
                     <Form.Field onChange={this.handleChange}>
                     <input type="text" name="email" value={this.state.date} placeholder= "Email"></input>
                     </Form.Field >
-                    <Button type="submit" text-align="center">Add</Button>
+                    <Button fluid type="submit" text-align="center">Add</Button>
                 </Form>
             </div>
         )

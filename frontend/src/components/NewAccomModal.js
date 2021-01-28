@@ -20,7 +20,7 @@ export default function NewAccomModal(props) {
                     <Modal.Header closeButton>
                     </Modal.Header>
                     <Modal.Body>
-                        <NewAccom event_id={props.event_id} newAccom={props.newAccom}/>                             
+                        <NewAccom handleClose={handleClose} event_id={props.event_id} newAccom={props.newAccom}/>                             
                     </Modal.Body>
                 </Modal>
         </div>

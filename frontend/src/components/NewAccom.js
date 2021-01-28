@@ -6,6 +6,8 @@ import {
     DateTimeInput,
     DatesRangeInput
   } from 'semantic-ui-calendar-react';
+  import moment from 'moment';
+
 
 export default class NewAccom extends Component {
     constructor(){
@@ -25,11 +27,14 @@ export default class NewAccom extends Component {
     }
 
     handleCalChange = (event, {name, value}) => {
-        if (this.state.hasOwnProperty(name)) {
-          this.setState({ date: value });
-        }
-      }
+        var dateString = value;
 
+        var dateMomentObject = moment(dateString, "DD/MM/YYYY");
+        var dateObject = dateMomentObject.format('MMM DD'); 
+        this.setState({
+            date: dateObject.toString()
+        })
+      }
 
     handleSubmit=(e)=>{
         e.preventDefault()
@@ -53,6 +58,7 @@ export default class NewAccom extends Component {
             location: '',
             date: ''
         })
+        this.props.handleClose()
     }
 
   
@@ -68,7 +74,7 @@ export default class NewAccom extends Component {
                     <Form.Field > 
                             <DateInput inline name = "date" value={this.state.date} onChange={this.handleCalChange} />
                     </Form.Field>
-                    <Button type="submit" text-align="center">Submit</Button>
+                    <Button fluid type="submit" text-align="center">Submit</Button>
                 </Form> <br/>              
             </div>
         )

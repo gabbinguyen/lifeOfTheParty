@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button} from 'react-bootstrap'
+import { Button, Checkbox, Form } from 'semantic-ui-react'
 
 
 export default class NewExpense extends Component {
@@ -45,16 +45,28 @@ export default class NewExpense extends Component {
             description: '',
             total: " "
         })
+        this.props.handleClose()
     }
 
     render() {
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <Form onSubmit={this.handleSubmit}> 
+                    <Form.Field onChange={this.handleChange}>
+                        <input type="text" name="description" value={this.state.description} placeholder= "Description" ></input>
+                    </Form.Field >
+                    <Form.Field onChange={this.handleChange}>
+                        <input type="number" name="total" value={this.state.total} placeholder= "Total" ></input>
+                    </Form.Field >
+                    <Button fluid type="submit" text-align="center">Submit</Button>
+                </Form> <br/>   
+
+
+                {/* <form onSubmit={this.handleSubmit}>
                 <input type="text" name="description" value={this.state.description} placeholder ="Description" onChange={this.handleChange}/><br></br>        
                 <input type="text" name="total" value={this.state.total} placeholder= "Total" onChange={this.handleChange}/><br></br>
                 <Button type="submit" text-align="center">Submit</Button>
-            </form>  
+            </form>   */}
             </div>
         )
     }

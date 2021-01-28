@@ -5,7 +5,6 @@ import ControlPanel from './ControlPanel'
 import NewEvent from './NewEvent'
 import NewEventModal from './NewEventModal'
 
-
 let eventsURL = 'http://localhost:3000/events/'
 let usersURL = "http://localhost:3000/users/"
 

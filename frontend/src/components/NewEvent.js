@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 // import {Button} from 'react-bootstrap'
+import moment from 'moment';
 import { Button, Form, Grid, Segment} from 'semantic-ui-react'
 import {
     DateInput,
@@ -35,9 +36,13 @@ export default class NewEvent extends Component {
     }
 
     handleCalChange = (event, {name, value}) => {
-        if (this.state.hasOwnProperty(name)) {
-          this.setState({ date: value });
-        }
+        var dateString = value;
+
+        var dateMomentObject = moment(dateString, "DD/MM/YYYY");
+        var dateObject = dateMomentObject.format('MMM DD, YYYY'); 
+        this.setState({
+            date: dateObject.toString()
+        })
       }
 
 
@@ -58,6 +63,13 @@ export default class NewEvent extends Component {
         })
         .then(res=>res.json())
         .then(json=>this.props.newEvent(json))
+        this.setState({
+            name: '',
+            date: '',
+            location: '',
+            event: ' '
+        })
+        this.props.handleClose()
         // .then(event=>{this.props.history.push('/dashboard')})
         // this.fetchLastEvent()
     }
@@ -94,7 +106,20 @@ export default class NewEvent extends Component {
         return (
             <div>
 
-                <Grid> 
+                <Form onSubmit={this.handleSubmit}> 
+                        <Form.Field onChange={this.handleChange}> 
+                        <input type="text" name="name" value={this.state.name} placeholder ="Event" />
+                        </Form.Field>
+                        <Form.Field onChange={this.handleChange}> 
+                        <input type="text" name="location" value={this.state.location} placeholder= "Location" />
+                        </Form.Field>
+                        <Form.Field > 
+                            <DateInput inline name = "date" value={this.state.date} onChange={this.handleCalChange} />
+                        </Form.Field>
+                        <Button fluid type="submit" text-align="center">Submit</Button>
+                    </Form>
+
+                {/* <Grid> 
                     <Grid.Column width ={9}> 
                     <Form size="huge" onSubmit={this.handleSubmit}> 
                         <Form.Field onChange={this.handleChange}> 
@@ -112,7 +137,7 @@ export default class NewEvent extends Component {
 
                     <Grid.Column width ={1}> 
                     </Grid.Column>
-                </Grid>
+                </Grid> */}
 
             {/* <form onSubmit={this.handleSubmit}>
                 <input type="text" name="name" value={this.state.name} placeholder ="Type of Event" onChange={this.handleChange}/><br></br>        

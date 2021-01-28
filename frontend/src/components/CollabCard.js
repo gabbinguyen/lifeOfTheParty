@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 import {Button, OverlayTrigger, Tooltip} from 'react-bootstrap'
 import {Icon, Grid } from 'semantic-ui-react'
-import NewAccom from './NewAccom.js'
 import Avatar, { ConfigProvider } from 'react-avatar'
-import { TiDelete } from 'react-icons/ti'
 
 
 export default class CollabCard extends Component {

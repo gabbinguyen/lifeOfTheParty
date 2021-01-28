@@ -8,6 +8,9 @@ import Login from './components/Login'
 import Dashboard from './components/Dashboard'
 import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom'
 import 'semantic-ui-css/semantic.min.css'
+import 'react-vertical-timeline-component/style.min.css';
+import 'rc-time-picker/assets/index.css';
+
 
 class App extends React.Component { 
     state = {
@@ -55,7 +58,7 @@ class App extends React.Component {
           </Router>
         </div>
       );
-    }
+  }
 }
 
 

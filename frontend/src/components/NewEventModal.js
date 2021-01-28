@@ -20,7 +20,7 @@ export default function NewEventModal(props) {
                     <Modal.Header closeButton>
                     </Modal.Header>
                     <Modal.Body>
-                        <NewEvent newEvent={props.newEvent}/>                             
+                        <NewEvent handleClose={handleClose} newEvent={props.newEvent}/>                             
                     </Modal.Body>
                 </Modal>
         </div>

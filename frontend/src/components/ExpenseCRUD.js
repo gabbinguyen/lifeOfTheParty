@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Button} from 'react-bootstrap'
+import { Form, Dropdown } from 'semantic-ui-react'
 import NewExpense from './NewExpense.js'
 
 export default class ExpenseCard extends Component {
@@ -8,27 +8,33 @@ export default class ExpenseCard extends Component {
     }
 
     handleFilter = filter => {
-        this.setState({filter})
-        console.log(this.state)
+        this.setState({filter: filter["value"]})
+        console.log(filter["value"])
       }
 
-    render() {
+render() {
+
+        const map = this.props.collaborators.map(collaborator => ({key: collaborator.user.name, value: collaborator.id, text: collaborator.user.name}))
+
+        
         return (
             <div>
-            <Button> 
-                <strong>Collaborator:</strong>
-                    <select onClick={(e) => this.handleFilter(e.target.value)} >
-                        {this.props.collaborators.map(collaborator => 
-                        <option id="collaborator" name="collaborator" value={collaborator.id} >{collaborator.user.name}</option>
-                    )}
-                    </select><br/>
+                    
+                <Form.Dropdown
+                    onChange={(e, {value}) => this.handleFilter({value})} 
+                    placeholder='Select Collaborator'
+                    fluid
+                    selection
+                    options={map}
+                /> 
+                <br/>
                 <NewExpense 
                 event_id={this.props.event_id} 
                 newExpense={this.props.newExpense} 
                 filter={this.state.filter} 
                 collaborators={this.props.collaborators} 
+                handleClose={this.props.handleClose}
                 />
-                </Button>
             </div>
         )
     }
