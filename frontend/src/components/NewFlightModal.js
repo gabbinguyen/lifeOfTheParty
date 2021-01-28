@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {Row, Col, Modal} from 'react-bootstrap'
-import { MdAirplanemodeActive } from 'react-icons/md'
+import { IoMdAddCircle } from 'react-icons/io'
 import { Button, Card, Grid, Icon } from 'semantic-ui-react'
 import FlightCRUD from './FlightCRUD'
 
@@ -13,9 +13,7 @@ export default function NewFlightModal(props) {
 
     return (
         <div>
-            <Button variant="info" onClick={handleShow}>
-                <MdAirplanemodeActive size={25} />  
-            </Button>
+                <IoMdAddCircle size={25} onClick={handleShow} />  
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     </Modal.Header>

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import {Row, Col, Modal} from 'react-bootstrap'
-import { MdHotel } from 'react-icons/md'
+import { IoMdAddCircle } from 'react-icons/io'
 import { Button, Card, Grid, Icon } from 'semantic-ui-react'
 import NewAccom from './NewAccom.js'
 
@@ -13,9 +13,7 @@ export default function NewAccomModal(props) {
 
     return (
         <div>
-            <Button variant="info" onClick={handleShow}>
-                <MdHotel size={25} />  
-            </Button>
+                <IoMdAddCircle size={25} onClick={handleShow} />  
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     </Modal.Header>

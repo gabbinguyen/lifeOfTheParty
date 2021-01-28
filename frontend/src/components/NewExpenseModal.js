@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import {Row, Col, Modal} from 'react-bootstrap'
-import { MdAttachMoney } from 'react-icons/md'
+import { IoMdAddCircle } from 'react-icons/io'
 import { Button, Card, Grid, Icon } from 'semantic-ui-react'
 import NewExpense from './NewExpense.js'
 import ExpenseCRUD from './ExpenseCRUD'
+
 
 
 export default function NewExpenseModal(props) {
@@ -14,9 +15,7 @@ export default function NewExpenseModal(props) {
 
     return (
         <div>
-            <Button variant="info" onClick={handleShow}>
-                <MdAttachMoney size={25} />  
-            </Button>
+                <IoMdAddCircle size={25}  onClick={handleShow} />  
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     </Modal.Header>

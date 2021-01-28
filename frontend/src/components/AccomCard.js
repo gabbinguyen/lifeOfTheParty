@@ -8,9 +8,9 @@ import NewAccom from './NewAccom.js'
 export default function AccomCard(props) {
     return (
         <div>
-             <Icon name='remove' size='small' onClick={() => props.accomDelete(props.accommodation)} /><br/>
-            {props.location} <br/> 
-            {props.date} <br/>
+            <br/>
+             <Icon name='remove' size='small' onClick={() => props.accomDelete(props.accommodation)} />
+            {props.location} {props.date} <br/>
         </div>
     )
 }

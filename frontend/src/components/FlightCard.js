@@ -16,16 +16,16 @@ export default class FlightCard extends Component {
                     <OverlayTrigger placement="bottom" overlay={<Tooltip id="button-tooltip-2">{this.props.collabname}</Tooltip>}>
                     {({ ref, ...triggerHandler }) => (
                             <ConfigProvider colors={['#2A0A5E', '#6CCECB', '#E56365', '#4260B7', ]}> 
-                                <Avatar round="20px" size="25" name = {this.props.collabname} {...triggerHandler} className="d-inline-flex align-items-center"> </Avatar>
+                                <Avatar round="20px" size="30" name = {this.props.collabname} {...triggerHandler} className="d-inline-flex align-items-center"> </Avatar>
                             </ConfigProvider>  
                     )}
                     </OverlayTrigger>
                 </Grid.Column>
                 <Grid.Column width={5}>
-                {this.props.flight_info}<br/> 
+                {this.props.date} {this.props.time}<br/> 
                 </Grid.Column>
                 <Grid.Column width={6}>
-                {this.props.date} {this.props.time}<br/> 
+                {this.props.flight_info}<br/> 
                 </Grid.Column> 
             </Grid> <br/>
             </div>

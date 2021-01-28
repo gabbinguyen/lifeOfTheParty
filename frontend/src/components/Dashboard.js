@@ -3,6 +3,7 @@ import {Button, Card} from 'react-bootstrap'
 import ControlPanel from './ControlPanel'
 import Itinerary from './Itinerary'
 import NewEvent from './NewEvent.js'
+import Testing from './Testing.js'
 
 class Dashboard extends Component {
 

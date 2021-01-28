@@ -10,8 +10,11 @@ import AddCollab from './AddCollab.js'
 import ExpenseCard from './ExpenseCard.js'
 import ExpenseCRUD from './ExpenseCRUD.js'
 import NewAccom from './NewAccom.js'
-import { Button, Card, Grid, Icon } from 'semantic-ui-react'
+import {  Card, CardHeader, CardBody, CardFooter, Box } from 'grommet'
+
+import { Button, Grid, Icon } from 'semantic-ui-react'
 import { AiOutlineUsergroupAdd } from 'react-icons/ai'
+
 import NewAccomModal from './NewAccomModal.js'
 
 import { Timeline, Events, TextEvent, themes, createTheme } from '@merc/react-timeline';
@@ -21,6 +24,12 @@ import NewFlightModal from './NewFlightModal.js'
 
 
 export default function EventCard(props) {
+
+// Font
+const style = {
+    fontFamily: "Abril Fatface",
+    fontSize: 20
+    }
 
 // Modal
     const [show, setShow] = useState(false);
@@ -54,12 +63,14 @@ export default function EventCard(props) {
 // Activities theme
     const theme = createTheme(themes.default, {
             card: {
-              backgroundColor: '#efefef',
+              backgroundColor: '#FAF9F3',
             },
             date: {
               backgroundColor: '#4260B7',
+              "fontSize": "1rem",
             },
             marker: {
+              backgroundColor: '#FAF9F3',
               borderColor: '#4260B7',
             },
             timelineTrack: {
@@ -70,80 +81,86 @@ export default function EventCard(props) {
     return (
         <div>
         <Grid> 
-            <Grid.Column width={4}> 
-                <Card > 
+            <Grid.Column width={3}> 
+                <Card background="#2A0A5E"> 
+                <CardBody width="large" > 
                 <h5>{props.name} <br/> </h5>
                 {props.date} <br/> 
                 {props.location} <br/><br/>
+                </CardBody>
+                <CardFooter background="#FFFFFF27" pad={{ horizontal: 'medium', vertical: 'small' }}> 
 
                 <Button  > Show Details </Button> 
                 <Button onClick={() => props.handleDelete(props.event)} > Delete Event </Button> 
-                </Card> <br/>
+                </CardFooter>
+                </Card> <br/>                
             </Grid.Column>
 
 {/* COL1  */}
     {/* COLLABORATORS */}
-            <Grid.Column width={5}>
-                <Card> 
-                    <h6>Collaborators</h6>
-                    <Grid> 
-                        <Grid.Column width={2}> 
-                        </Grid.Column>
-                        <Grid.Column width={3}>
-                        {col1} 
-                        </Grid.Column>
-                        <Grid.Column width={3}>
-                        {col2}
-                        </Grid.Column>
-                        <Grid.Column width={3}> 
-                        {col3}
-                        </Grid.Column>
-                        <Grid.Column width={3}>
-                        {col4}
-                        </Grid.Column>
-                    </Grid>
-                    <br/>
-
-                    <Button variant="info" onClick={handleShow}>
-                        <AiOutlineUsergroupAdd size={25} />  
-                    </Button>
+            <Grid.Column width={4}>
+                <Card background="#EFCAC1"> 
+                     <CardBody width="large" > 
+                        <Grid> 
+                            <Grid.Column width={2}> 
+                            </Grid.Column>
+                            <Grid.Column width={3}>
+                            {col1} 
+                            </Grid.Column>
+                            <Grid.Column width={3}>
+                            {col2}
+                            </Grid.Column>
+                            <Grid.Column width={3}> 
+                            {col3}
+                            </Grid.Column>
+                            <Grid.Column width={3}>
+                            {col4}
+                            </Grid.Column>
+                        </Grid>
+                    </CardBody>
+                    <br/>                    
+                    <CardFooter background="#FFFFFF27" pad={{ horizontal: 'medium', vertical: 'small' }} onClick={handleShow}> 
+                    {/* <Box direction="row" align="center" gap="small">  */}
+                    <h6 style={style}>Collaborators</h6> <AiOutlineUsergroupAdd size={20} />
+                    {/* </Box> */}
+                    </CardFooter>
+        
                         <Modal show={show} onHide={handleClose}>
                             <Modal.Header closeButton>
                             </Modal.Header>
                             <Modal.Body>
                                 <AddCollab handleClose={handleClose} users={props.users} event={props.event} addCollab={props.addCollab}/>
                             </Modal.Body>
-                        </Modal>
-                </Card>
+                        </Modal>     
+                </Card> <br/>
+{/* ACCOMODATIONS */}
 
-
-    {/* ACCOMODATIONS */}
-
-                <Card> 
-                <h6> Accommodations</h6>
-                    {props.accommodations.map(accommodation => 
-
-                        <AccomCard 
-                        event={props.event} 
-                        accommodation={accommodation} 
-                        location={accommodation.location} 
-                        date={accommodation.date} 
-                        accomDelete={props.accomDelete}
-                        event_id={props.event.id} 
-                        newAccom={props.newAccom}
-                        /> 
-                        )}
-                        <br/>
-                        <NewAccomModal               
-                        event_id={props.event.id} 
-                        newAccom={props.newAccom}
-                        />
-                </Card>
+                <Card background="#195D7E"> 
+                    <CardBody> 
+                        {props.accommodations.map(accommodation => 
+                            <AccomCard 
+                            event={props.event} 
+                            accommodation={accommodation} 
+                            location={accommodation.location} 
+                            date={accommodation.date} 
+                            accomDelete={props.accomDelete}
+                            event_id={props.event.id} 
+                            newAccom={props.newAccom}
+                            /> 
+                            )}
+                    </CardBody> <br/>
+                    <CardFooter background="#FFFFFF27" pad={{ horizontal: 'medium', vertical: 'small' }} >
+                        {/* <Box direction="row" align="center" gap="small">  */}
+                        <h6 style={style}>Accommodations</h6><NewAccomModal event_id={props.event.id} newAccom={props.newAccom}/>
+                        {/* </Box> */}
+                    </CardFooter>
+                </Card> <br/>
 
 {/* FLIGHTS */}
 
-                <Card>
-                    <h6> Flights </h6>
+                <Card  background="#79A7AF">
+                <CardBody> 
+                    <br/>
                     {props.flights.map(flight => 
                         <FlightCard 
                         collabname={flight.collaborator.user.name}
@@ -154,18 +171,19 @@ export default function EventCard(props) {
                         time={flight.time}
                         flightDelete={props.flightDelete} 
                     /> 
-                    )} <br/>
+                    )} 
+                 </CardBody> <br/>
+                 <CardFooter background="#FFFFFF27" pad={{ horizontal: 'medium', vertical: 'small' }} >
+                        {/* <Box direction="row" align="center" gap="small">  */}
+                        <h6 style={style}> Flights </h6> <NewFlightModal event_id={props.event.id} flights={props.flights} newFlight={props.newFlight} collaborators={props.collaborators}/>    
+                        {/* </Box> */}
+                    </CardFooter>
+                </Card> <br/>
 
-                        <NewFlightModal 
-                        event_id={props.event.id}
-                        flights={props.flights}
-                        newFlight={props.newFlight}
-                        collaborators={props.collaborators}
-                        /> 
-                </Card>
-
-                <Card>
-                <h6> Expenses</h6> 
+{/* EXPENSES */}
+                <Card background="#BAAECD">
+                <CardBody> 
+                    <br/>
                     {props.expenses.map(expense => 
                         <ExpenseCard 
                         expense={expense}
@@ -176,33 +194,20 @@ export default function EventCard(props) {
                         expenseDelete={props.expenseDelete}
 
                         />
-                        )} <br/>
-                        
-                        <NewExpenseModal
-                        
+                        )} 
+                 </CardBody> <br/>
+                 <CardFooter background="#FFFFFF27" pad={{ horizontal: 'medium', vertical: 'small' }} >
+                    {/* <Box direction="row" align="center" gap="small">         */}
+                    <h6 style={style}> Expenses</h6> <NewExpenseModal
                             event_id={props.event.id}
                             expenses={props.expenses}
                             newExpense={props.newExpense}
                             collaborators={props.collaborators}
                             expenseDelete={props.expenseDelete}
-                        
-                        />
-                        {/* <Button> 
-
-
-                        <ExpenseCRUD 
-                        event_id={props.event.id}
-                        expenses={props.expenses}
-                        newExpense={props.newExpense}
-                        collaborators={props.collaborators}
-                        expenseDelete={props.expenseDelete}
-                        /> 
-                        </Button> */}
-
+                        />                  
+                        {/* </Box> */}
+                    </CardFooter>
                 </Card>
-
-
-
 
             </Grid.Column>
 
@@ -211,10 +216,9 @@ export default function EventCard(props) {
 {/* COL 2 */}                     
 {/* ACTIVITIES */}
 
-            <Grid.Column width={6} > 
-            <Card> 
-
-                <h6> Activities </h6>
+            <Grid.Column width={5} > 
+            <Card background="#EDEAE1">
+            <CardBody> 
                 <Timeline theme={theme}>
                     <Events> 
                     {props.activities.map(activity=>
@@ -228,15 +232,15 @@ export default function EventCard(props) {
                     )}
                     </Events>
                 </Timeline>
-                    <br/>
-                    
-                {/* <Button>  */}
+                    </CardBody> <br/>
+                 <CardFooter background="#FFFFFF27" pad={{ horizontal: 'medium', vertical: 'small' }} >
+                 <h6 style={style}> Itinerary</h6> 
                     <ActCRUD 
                     event_id={props.event.id} 
                     activities={props.activities}
                     newAct={props.newAct}
                     /> 
-                {/* </Button> <br />  */}
+                </CardFooter>
                 </Card>
             </Grid.Column>
 {/* Insert below here */}                

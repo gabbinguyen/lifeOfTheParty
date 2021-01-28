@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import {Row, Col, Modal} from 'react-bootstrap'
-import { BsCalendar } from 'react-icons/bs'
+import { IoMdAddCircle } from 'react-icons/io'
 import { Button, Card, Grid, Icon } from 'semantic-ui-react'
 import NewAct from './NewAct.js'
 
@@ -14,9 +14,7 @@ export default function ActCRUD(props) {
 
     return (
         <div>
-            <Button variant="info" onClick={handleShow}>
-                <BsCalendar size={25} />  
-            </Button>
+                <IoMdAddCircle size={25} onClick={handleShow} />  
                 <Modal show={show} onHide={handleClose}>
                     <Modal.Header closeButton>
                     </Modal.Header>
