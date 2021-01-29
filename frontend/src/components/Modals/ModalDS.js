@@ -13,6 +13,7 @@ const ModalDS = props => {
       <div className='logout-section modal-ds-section' onClick={props.logout}>
         <IoIosLogOut className='io-logout-icon' /> <p>Logout</p>
         <br/>
+        <br/>
       </div>
     </div>
   );
