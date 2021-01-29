@@ -8,7 +8,7 @@ class CollaboratorsController < ApplicationController
 
     def show
         collaborator = Collaborator.find(params[:id])
-        render json: collaborator
+        render json: collaborator, include: [:event]
     end
 
     def create
