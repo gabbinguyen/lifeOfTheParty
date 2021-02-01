@@ -1,0 +1,299 @@
+.modal-window-overlay {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.65);
+  z-index: 9999;
+  overflow-y: auto;
+  padding-left: 66px;
+}
+
+/* --------------------------------------- */
+/* --------------------------------------- */
+/* --------------------------------------- */
+
+.project-settings-window-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  z-index: 9999;
+  overflow: hidden;
+  padding-left: 66px;
+}
+
+.project-settings-sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 500px;
+  background-color: white;
+  border-radius: 10px 0px 0px 10px;
+  box-shadow: -10px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  padding-top: 20px;
+}
+
+.sidebar-close-btn-wrapper {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: -50px;
+  top: 10px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar-close-btn-wrapper:hover {
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.sidebar-close-btn-wrapper svg {
+  width: 1.5em;
+  height: 1.5em;
+  color: #ffffff;
+}
+
+.ps-project-banner {
+  width: 100%;
+  border-radius: 10px 0px 0px 0px;
+  background-color: skyblue;
+}
+
+.ps-body {
+  padding: 15px;
+}
+
+.project-name-section input {
+  width: 100%;
+  border-radius: 5px;
+  border: none;
+  border-radius: 1px;
+  border-color: #ffffff;
+  box-shadow: 0 0 0 0 #ffffff;
+  font-size: 20px;
+  font-weight: 500;
+  color: #495057;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.project-name-section input:enabled:focus {
+  outline: 0 none;
+  box-shadow: 0 0 0 0.2rem #a6d5fa;
+  border-color: #2196f3;
+}
+
+.project-description-section {
+  margin-bottom: 20px;
+}
+
+.ps-pd-title {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.ps-pd-title svg {
+  width: 1.5em;
+  height: 1.5em;
+  color: #8888ff;
+  margin-right: 10px;
+}
+
+.ps-pd-title h3 {
+  font-size: 14px;
+  color: #9c9c9c;
+  text-transform: uppercase;
+}
+
+.modal-ti-td-textarea {
+  padding-left: 34px;
+}
+
+.ps-pd-textarea textarea {
+  overflow: auto;
+  width: 100%;
+  height: 75px;
+  padding: 5px 10px;
+  border: 1px solid #f6f6f6;
+  box-shadow: 0 0 0 0 #f6f6f6;
+  resize: none;
+  border-radius: 5px;
+  background-color: #f6f6f6;
+  margin-bottom: 5px;
+  font-size: 0.95rem;
+  color: #495057;
+  transition: height 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.ps-pd-textarea textarea:hover {
+  border: 1px solid #2196f3;
+}
+
+.ps-pd-textarea textarea:enabled:focus {
+  height: 100px;
+  outline: 0 none;
+  box-shadow: 0 0 0 0.2rem #a6d5fa;
+  border-color: #2196f3;
+  box-shadow: 0 0 0 0.2rem #a6d5fa;
+}
+
+.ps-pd-textarea textarea::placeholder {
+  color: #9c9c9c;
+  font-size: 15px;
+}
+
+.ps-pd-textarea button {
+  border: none;
+  border-radius: 5px;
+  background-color: #08a308;
+  color: white;
+  padding: 3px 15px;
+  transition: background-color 0.2s;
+}
+
+.ps-pd-textarea button:hover {
+  background-color: #079b07;
+}
+
+.project-name-section,
+.project-startdate-section,
+.project-duedate-section,
+.project-completion-section,
+.project-status-section,
+.project-admins-section,
+.project-members-section {
+  margin-bottom: 20px;
+}
+
+.project-duedate-section h4,
+.project-startdate-section h4,
+.project-completion-section h4,
+.project-status-section h4,
+.project-admins-section h4,
+.project-members-section h4,
+.project-dangerzone-section h4 {
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #9c9c9c;
+  margin-bottom: 10px;
+}
+
+.project-startdate-section .p-calendar,
+.project-duedate-section .p-calendar,
+.project-completion-section .p-calendar {
+  height: 29px;
+  width: 85%;
+}
+
+.project-startdate-section .p-datepicker-header,
+.project-duedate-section .p-datepicker-header {
+  padding: 0.2rem;
+}
+
+.project-startdate-section .p-datepicker table,
+.project-duedate-section .p-datepicker table,
+.project-completion-section table {
+  font-size: 0.8rem;
+  margin: 0.2rem 0;
+}
+
+.project-startdate-section .p-datepicker table td,
+.project-duedate-section .p-datepicker table td,
+.project-completion-section .p-datepicker table td {
+  padding: 0;
+}
+
+.project-startdate-section .p-timepicker,
+.project-duedate-section .p-timepicker,
+.project-completion-section .p-timepicker {
+  padding: 0.2rem;
+}
+
+.project-startdate-section .p-timepicker span,
+.project-duedate-section .p-timepicker span,
+.project-completion-section .p-timepicker span {
+  font-size: 0.8rem;
+}
+
+.project-startdate-section .p-datepicker-buttonbar,
+.project-duedate-section .p-datepicker-buttonbar,
+.project-completion-section .p-datepicker-buttonbar {
+  padding: 0.2rem;
+}
+
+.project-status-section .p-dropdown {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  height: 29px;
+}
+
+.project-members-container {
+  display: flex;
+  align-items: center;
+}
+
+.project-member-wrapper {
+  width: 30px;
+  height: 30px;
+  background-color: skyblue;
+  border-radius: 50%;
+  margin-right: 5px;
+  overflow: hidden;
+  border: 1px solid rgb(110, 110, 110);
+  cursor: pointer;
+}
+
+.project-member-wrapper img {
+  width: 100%;
+}
+
+.project-dangerzone-section button {
+  border: none;
+  border-radius: 4px;
+  padding: 3px 15px;
+  background-color: #ff5353;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.project-dangerzone-section button:hover {
+  background-color: #f54848;
+}
+
+/* ---- MODAL CSS TRANSITIONS -----*/
+
+.sidebar-ps-enter {
+  opacity: 0;
+  transform: translateX(500px);
+  transition: opacity 0.2s, transform 0.3s;
+}
+
+.sidebar-ps-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.sidebar-ps-exit {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.sidebar-ps-exit-active {
+  opacity: 0;
+  transform: translateX(500px);
+}

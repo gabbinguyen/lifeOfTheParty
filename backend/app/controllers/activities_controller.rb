@@ -1,5 +1,14 @@
 class ActivitiesController < ApplicationController
-    before_action :authorized, only: [:update, :create, :destroy]
+
+    def index
+        activities = Activity.all
+        render json: activities
+    end
+
+    def show
+        activity = Activity.find(params[:id])
+        render json: activity, include: [:event]
+    end
 
     def update
         activity = Activity.find(params[:id])
@@ -12,7 +21,8 @@ class ActivitiesController < ApplicationController
 
     def create
         activity = Activity.create(activity_params)
-        render json: activity  
+        events = Event.where(user: current_user)
+        render json: events, include: [:activities, :accommodations, :expenses => {:include => [:collaborator => {:include => [:user]}]}, :collaborators => {:include => [:user, :flight => {:only => [:flight_info]}]}, :flights => {:include => [:collaborator => {:include => [:user]}]}]
     end
 
     def destroy
@@ -23,6 +33,6 @@ class ActivitiesController < ApplicationController
     private
 
     def activity_params
-        params.require(:activity).permit(:itinerary_id, :description, :date, :time);
+        params.require(:activity).permit(:event_id, :description, :date, :time);
     end
 end

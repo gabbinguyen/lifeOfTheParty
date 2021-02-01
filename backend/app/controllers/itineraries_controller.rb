@@ -1,5 +1,15 @@
 class ItinerariesController < ApplicationController
-    before_action :authorized, only: [:create, :update]
+    before_action :authenticate!, only: [:index,:show,:update,:destroy]
+
+    def index
+        itineraries = Itinerary.all
+        render json: itineraries
+    end
+
+    def show
+        itineary = Itinerary.find(params[:id])
+        render json: itinerary
+    end
 
     def create
         itinerary = Itinerary.create(itinerary_params)
